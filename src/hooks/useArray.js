@@ -5,11 +5,11 @@ export const useArray = (initialValue) => {
     value,
 
     add: useCallback((toAdd) => setValue((value) => [...value, toAdd])),
-    changeComplete: useCallback((id) =>
+    changeInsured: useCallback((id) =>
       setValue((arr) => {
         let newArr = arr.map((val) => {
           if (val.id === id) {
-            return { ...val, completed: !val.completed };
+            return { ...val, insured: !val.insured };
           }
           return val;
         });

@@ -6,10 +6,10 @@ export default function gearReducer(state, action) {
       let newArr = state.filter((val) => val.id !== action.id);
       return newArr;
 
-    case "Change Completed":
+    case "Change Insured":
       return state.map((val) => {
         if (action.id === val.id) {
-          return { ...val, completed: !val.completed };
+          return { ...val, insured: !val.insured };
         }
         return val;
       });

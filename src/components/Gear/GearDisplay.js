@@ -1,10 +1,19 @@
 import React from "react";
 import "./Gear.css";
 
-const GearDisplay = () => {
+const GearDisplay = ({ gear, deleteGear, addToVan, changeInsured }) => {
   return (
     <>
-      <h1>Gear Display Page works</h1>
+      <div>
+        {gear.bandmate} - {gear.item} {gear.notes}
+        <input
+          type="checkbox"
+          checked={gear.insured}
+          onClick={() => changeInsured(gear.id)}
+        />
+        <button onClick={() => addToVan(gear.id)}>Send to Van</button>
+        <button onClick={() => deleteGear(gear.id)}>x</button>
+      </div>
     </>
   );
 };
