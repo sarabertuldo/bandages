@@ -3,7 +3,7 @@ import CreateAccount from "./components/CreateAccount/CreateAccount";
 import GearList from "./components/Gear/GearList";
 import Home from "./components/Home/Home";
 import OnTour from "./components/OnTour/OnTour";
-import { GearContext } from "./shared/GearContext";
+import GearProvider from "./shared/GearContext";
 import {
   BrowserRouter as Router,
   Redirect,
@@ -16,7 +16,7 @@ import store from "./redux/Store";
 
 function App() {
   return (
-    <GearContext.Provider store={store}>
+    <GearProvider>
       <Router>
         <div>
           <header className="top">Bandages</header>
@@ -48,7 +48,7 @@ function App() {
           <footer className="bottom">Made in 2021</footer>
         </div>
       </Router>
-    </GearContext.Provider>
+    </GearProvider>
   );
 }
 

@@ -8,6 +8,7 @@ const GearFilter = () => {
   const [sortKey, setSortKey] = useState("bandmate");
   const [sortOrder, setSortOrder] = useState(1);
   const gear = useContext(GearContext);
+  console.log(gear);
 
   return (
     <>
@@ -44,10 +45,10 @@ const GearFilter = () => {
       </div>
       <div>
         {gear.value
-          .filter((val) => {
+          .filter((value) => {
             let filterLC = filter.toLowerCase();
-            let bandmateLC = val.bandmate.toLowerCase();
-            let itemLC = val.item.toLowerCase();
+            let bandmateLC = value.bandmate.toLowerCase();
+            let itemLC = value.item.toLowerCase();
             return bandmateLC.includes(filterLC) || itemLC.includes(filterLC)
               ? true
               : false;

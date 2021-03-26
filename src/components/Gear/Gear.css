@@ -1,0 +1,8 @@
+.gear-area {
+  background-color: grey;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 10px;
+}

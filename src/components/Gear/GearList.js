@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useMemo, useState } from "react";
 import GearFilter from "./GearFilter";
 import { connect } from "react-redux";
 import { addToVan, deleteFromVan } from "../../redux/actions/";
@@ -11,6 +11,10 @@ const GearList = (props) => {
   const [notes, setNotes] = useState("");
   const [id, setId] = useState([7]);
   const gear = useContext(GearContext);
+
+  const tourGear = useMemo(() => {
+    return props.onTour.map((gear) => gear.item);
+  }, [props.onTour]);
 
   return (
     <>
@@ -30,7 +34,7 @@ const GearList = (props) => {
         <input
           id="item"
           value={item}
-          placeholder="item"
+          placeholder="Item"
           onChange={(e) => setItem(e.target.value)}
           type="text"
         />
@@ -52,7 +56,7 @@ const GearList = (props) => {
           type="submit"
           value="addGear"
           onClick={() => {
-            let newGear = { id, item, notes, completed: false, bandmate };
+            let newGear = { id, item, notes, insured: false, bandmate };
             gear.add(newGear);
             setId(id + 1);
             setBandmate("");
@@ -68,6 +72,7 @@ const GearList = (props) => {
           gear={props.gear}
           bandmate={props.bandmate}
           notes={props.notes}
+          onTour={tourGear.includes(props.item)}
           deleteFromVan={props.deleteFromVan}
           addToVan={props.addToVan}
         />

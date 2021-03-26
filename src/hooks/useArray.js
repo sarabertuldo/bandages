@@ -1,5 +1,6 @@
 import { useCallback, useState } from "react";
 export const useArray = (initialValue) => {
+  console.log(initialValue);
   const [value, setValue] = useState(initialValue);
   return {
     value,

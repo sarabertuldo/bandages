@@ -17,7 +17,7 @@ const CreateAccount = (props) => {
   }
   return (
     <>
-      <h1>Sign Up</h1>
+      <h1>Create Account</h1>
       <div className="form-container">
         <div class="input-area">
           <input
