@@ -1,13 +1,15 @@
-import React, { useContext, useState } from "react";
+import React, { useArray, useContext, useState } from "react";
 import { GearContext } from "../../shared/GearContext";
 import GearDisplay from "./GearDisplay";
-import { addToVan, deleteFromVan } from "../../redux/actions/";
 import "./Gear.css";
 
 const GearFilter = () => {
   const [filter, setFilter] = useState("");
   const [sortKey, setSortKey] = useState("bandmate");
   const [sortOrder, setSortOrder] = useState(1);
+  const gear = useContext(GearContext);
+
+  // map in my gear filter
 
   return (
     <>
