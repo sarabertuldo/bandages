@@ -4,6 +4,12 @@ export const useArray = (initialValue) => {
   const [value, setValue] = useState(initialValue);
   return {
     value,
+    addToVan: useCallback((toAddtoVan) =>
+      setValue((value) => [...value, toAddtoVan])
+    ),
+    removeFromVan: useCallback((toRemoveFromVan) =>
+      setValue((value) => [...value, toRemoveFromVan])
+    ),
     edit: useCallback((toEdit) => setValue((value) => [...value, toEdit])),
     add: useCallback((toAdd) => setValue((value) => [...value, toAdd])),
     changeInsured: useCallback((id) =>

@@ -12,10 +12,6 @@ const GearList = (props) => {
   const gear = useContext(GearContext);
   console.log(props);
 
-  const tourGear = useMemo(() => {
-    return props.onTour.map((gear) => gear.item);
-  }, [props.onTour]);
-
   return (
     <>
       <h1 className="center">Gear List:</h1>
@@ -68,14 +64,7 @@ const GearList = (props) => {
         </button>
       </div>
       <div>
-        <GearFilter
-          gear={gear.gear}
-          bandmate={gear.bandmate}
-          notes={gear.notes}
-          onTour={tourGear.includes(props.item)}
-          deleteFromVan={gear.delete}
-          addToVan={gear.add}
-        />
+        <GearFilter />
       </div>
     </>
   );

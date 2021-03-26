@@ -1,13 +1,17 @@
-import React, { useArray, useContext, useState } from "react";
+import React, { useContext, useMemo, useState } from "react";
 import { GearContext } from "../../shared/GearContext";
 import GearDisplay from "./GearDisplay";
 import "./Gear.css";
 
-const GearFilter = () => {
+const GearFilter = (props) => {
   const [filter, setFilter] = useState("");
   const [sortKey, setSortKey] = useState("bandmate");
   const [sortOrder, setSortOrder] = useState(1);
   const gear = useContext(GearContext);
+
+  const tourGear = useMemo(() => {
+    return props.onTour.map((gear) => gear.item);
+  }, [props.onTour]);
 
   // map in my gear filter
 
@@ -72,8 +76,8 @@ const GearFilter = () => {
                 deleteGear={gear.delete}
                 changeInsured={gear.changeInsured}
                 addToVan={gear.addToVan}
-                deleteFromVan={gear.deleteFromVan}
-                onTour={gear.onTour}
+                removeFromVan={gear.removeFromVan}
+                onTour={tourGear.includes(gear.item)}
                 gear={g}
                 key={index}
               />

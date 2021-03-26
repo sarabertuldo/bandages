@@ -1,4 +1,4 @@
-import React, { useArray, useContext } from "react";
+import React, { useContext } from "react";
 import { GearContext } from "../../shared/GearContext";
 import "./Gear.css";
 
@@ -7,7 +7,7 @@ const GearDisplay = () => {
   return (
     <>
       <div>
-        props.gear.map((gear)
+        {/* props.gear.map((gear) */}
         {/* {gear.bandmate} {gear.item} {gear.notes} */}
         <input
           type="checkbox"
@@ -22,7 +22,6 @@ const GearDisplay = () => {
             Remove from Van
           </button>
         )}
-        {/* <button onClick={() => addToVan(gear.id)}>Send to Van</button> */}
         <button onClick={() => deleteGear(gear.id)}>x</button>
       </div>
     </>
