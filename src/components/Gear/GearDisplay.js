@@ -1,18 +1,14 @@
-import React from "react";
+import React, { useArray, useContext } from "react";
+import { GearContext } from "../../shared/GearContext";
 import "./Gear.css";
 
-const GearDisplay = ({
-  gear,
-  onTour,
-  deleteGear,
-  addToVan,
-  removeFromVan,
-  changeInsured,
-}) => {
+const GearDisplay = () => {
+  const gear = useContext(GearContext);
   return (
     <>
       <div>
-        {gear.bandmate} {gear.item} {gear.notes}
+        props.gear.map((gear)
+        {/* {gear.bandmate} {gear.item} {gear.notes} */}
         <input
           type="checkbox"
           checked={gear.insured}

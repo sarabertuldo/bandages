@@ -1,7 +1,6 @@
-import React, { useContext, useMemo, useState } from "react";
+import React, { useArray, useContext, useMemo, useState } from "react";
 import GearFilter from "./GearFilter";
 import { connect } from "react-redux";
-import { addToVan, deleteFromVan } from "../../redux/actions/";
 import "./Gear.css";
 import { GearContext } from "../../shared/GearContext";
 
@@ -12,6 +11,7 @@ const GearList = (props) => {
   const [id, setId] = useState([7]);
   const gear = useContext(GearContext);
   console.log(props);
+
   const tourGear = useMemo(() => {
     return props.onTour.map((gear) => gear.item);
   }, [props.onTour]);
@@ -81,16 +81,4 @@ const GearList = (props) => {
   );
 };
 
-const mapDispatchToProps = {
-  addToVan,
-  deleteFromVan,
-};
-
-function mapStateToProps(state) {
-  return {
-    globalState: state,
-    onTour: state.onTour,
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(GearList);
+export default GearList;

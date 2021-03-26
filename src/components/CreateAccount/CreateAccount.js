@@ -28,7 +28,7 @@ const CreateAccount = (props) => {
             id="username"
           ></input>
         </div>
-        <div class="input-area">
+        <div className="input-area">
           <input
             type="password"
             placeholder="Password"
