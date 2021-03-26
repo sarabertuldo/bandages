@@ -7,6 +7,7 @@ const CreateAccount = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [location, setLocation] = useState("");
 
   function signup() {
     console.log(username, password);
@@ -42,6 +43,15 @@ const CreateAccount = (props) => {
             placeholder="E-mail address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            id="email"
+          ></input>
+        </div>
+        <div class="input-area">
+          <input
+            type="location"
+            placeholder="Location"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
             id="email"
           ></input>
         </div>

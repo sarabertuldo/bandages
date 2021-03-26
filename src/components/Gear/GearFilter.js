@@ -68,7 +68,7 @@ const GearFilter = () => {
             return (
               <GearDisplay
                 deleteGear={gear.delete}
-                changeComplete={gear.changeInsured}
+                changeInsured={gear.changeInsured}
                 gear={g}
                 key={index}
               />
