@@ -1,14 +1,13 @@
 import React, { useContext, useState } from "react";
 import { GearContext } from "../../shared/GearContext";
 import GearDisplay from "./GearDisplay";
+import { addToVan, deleteFromVan } from "../../redux/actions/";
 import "./Gear.css";
 
 const GearFilter = () => {
   const [filter, setFilter] = useState("");
   const [sortKey, setSortKey] = useState("bandmate");
   const [sortOrder, setSortOrder] = useState(1);
-  const gear = useContext(GearContext);
-  console.log(gear);
 
   return (
     <>
@@ -70,6 +69,9 @@ const GearFilter = () => {
               <GearDisplay
                 deleteGear={gear.delete}
                 changeInsured={gear.changeInsured}
+                addToVan={gear.addToVan}
+                deleteFromVan={gear.deleteFromVan}
+                onTour={gear.onTour}
                 gear={g}
                 key={index}
               />
@@ -81,3 +83,17 @@ const GearFilter = () => {
 };
 
 export default GearFilter;
+
+{
+  /* <div>
+<GearFilter
+  gear={props.gear}
+  bandmate={props.bandmate}
+  notes={props.notes}
+  onTour={tourGear.includes(props.item)}
+  deleteFromVan={props.deleteFromVan}
+  addToVan={props.addToVan}
+/>
+</div> 
+Lines 73-75 delete?}*/
+}

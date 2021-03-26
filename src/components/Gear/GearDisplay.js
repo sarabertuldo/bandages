@@ -23,7 +23,6 @@ const GearDisplay = ({
         )}
         {onTour && (
           <button onClick={() => removeFromVan(gear.id)}>
-            {" "}
             Remove from Van
           </button>
         )}

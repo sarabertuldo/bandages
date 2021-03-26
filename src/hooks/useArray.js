@@ -4,7 +4,7 @@ export const useArray = (initialValue) => {
   const [value, setValue] = useState(initialValue);
   return {
     value,
-
+    edit: useCallback((toEdit) => setValue((value) => [...value, toEdit])),
     add: useCallback((toAdd) => setValue((value) => [...value, toAdd])),
     changeInsured: useCallback((id) =>
       setValue((arr) => {
