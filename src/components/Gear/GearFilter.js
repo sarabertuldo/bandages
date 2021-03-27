@@ -10,9 +10,9 @@ const GearFilter = (props) => {
   const gear = useContext(GearContext);
 
   const tourGear = useMemo(() => {
-    return props.gear.onTour.map((gear) => gear.item);
-  }, [props.gear.onTour]);
-  console.log(gear.item);
+    return props.gear.value.map((gear) => gear.item);
+  }, [props.onTour]);
+  console.log(props.onTour);
 
   // map in my gear filter
 
@@ -78,7 +78,7 @@ const GearFilter = (props) => {
                 changeInsured={gear.changeInsured}
                 addToVan={gear.addToVan}
                 removeFromVan={gear.removeFromVan}
-                onTour={tourGear.includes(gear.item)}
+                onTour={tourGear.includes(gear.onTour)}
                 gear={g}
                 key={index}
               />

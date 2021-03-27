@@ -4,6 +4,9 @@ export const useArray = (initialValue) => {
   const [value, setValue] = useState(initialValue);
   return {
     value,
+    onTour: useCallback((toOnTour) =>
+      setValue((value) => [...value, toOnTour])
+    ),
     addToVan: useCallback((toAddtoVan) =>
       setValue((value) => [...value, toAddtoVan])
     ),
