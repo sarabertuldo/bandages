@@ -10,6 +10,7 @@ import {
   NavLink,
   Route,
   Switch,
+  Link,
 } from "react-router-dom";
 
 function App() {
@@ -17,8 +18,17 @@ function App() {
     <GearProvider>
       <Router>
         <div>
-          <header className="top">Bandages</header>
-          <nav>
+          <header className="top">
+            <Link to="/Home">
+              <img
+                src="https://i.ibb.co/BNw76N7/bandages-small.png"
+                alt="Bandages logo"
+                height="100"
+                width="232"
+              />
+            </Link>
+          </header>
+          <nav className="navbar">
             <NavLink className="link" to="/Home">
               Home
             </NavLink>
@@ -26,7 +36,7 @@ function App() {
               Create Account
             </NavLink>
             <NavLink className="link" to="/GearList">
-              GearList
+              Gear List
             </NavLink>
             <NavLink className="link" to="/OnTour">
               On Tour
@@ -43,7 +53,18 @@ function App() {
               </Route>
             </Switch>
           </main>
-          <footer className="bottom">Made in 2021</footer>
+          <footer className="bottom">
+            <a href="https://github.com/sarabertuldo">
+              <div className="logo">
+                <img
+                  src="https://i.ibb.co/P6ZGx4N/madeby.png"
+                  alt="made by sara bertuldo"
+                  height="50"
+                  width="250"
+                />
+              </div>
+            </a>
+          </footer>
         </div>
       </Router>
     </GearProvider>

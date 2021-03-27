@@ -3,16 +3,16 @@ import { GearContext } from "../../shared/GearContext";
 import GearDisplay from "./GearDisplay";
 import "./Gear.css";
 
-const GearFilter = (props) => {
+const GearFilter = () => {
   const [filter, setFilter] = useState("");
   const [sortKey, setSortKey] = useState("bandmate");
   const [sortOrder, setSortOrder] = useState(1);
   const gear = useContext(GearContext);
 
   const tourGear = useMemo(() => {
-    return props.gear.value.map((gear) => gear.item);
-  }, [props.onTour]);
-  console.log(props.onTour);
+    return gear.value.map((gear) => gear.item);
+  }, [gear.onTour]);
+  console.log(gear.onTour);
 
   // map in my gear filter
 

@@ -4,14 +4,39 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  margin-bottom: 10px;
 }
 
-.bottom {
+.navbar {
   background-color: black;
   color: white;
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.bottom {
+  background-color: white;
+  color: black;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
   margin-bottom: 10px;
+}
+
+.logo {
+  display: block;
+  margin: auto;
+  cursor: pointer;
+}
+
+.link {
+  color: white;
+  justify-content: space-between;
+  text-decoration: none;
+  margin-right: 25px;
+  cursor: pointer;
 }
