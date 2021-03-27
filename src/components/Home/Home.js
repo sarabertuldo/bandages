@@ -45,34 +45,38 @@ const Home = (props) => {
   }
   return (
     <>
-      <h1>Login</h1>
-      <div>
-        <input
-          id="username"
-          type="text"
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="Username"
-          value={username}
-        ></input>
-      </div>
-      <div>
-        <input
-          id="password"
-          type="Password"
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-          value={password}
-        ></input>
-      </div>
-      <button onClick={() => login()}>Submit</button>
-      {error.length > 0 && (
-        <h3 style={{ color: "red" }} className="text-center">
-          {error}
-        </h3>
-      )}
-      <p>
-        Create an account <Link to="/createaccount">here</Link>.
-      </p>
+      <h1>Hello!</h1>
+      <p>Bandages is here to help you manage your band's gear.</p>
+      <h3>Login</h3>
+      <main>
+        <div>
+          <input
+            id="username"
+            type="text"
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Username"
+            value={username}
+          ></input>
+        </div>
+        <div>
+          <input
+            id="password"
+            type="Password"
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+            value={password}
+          ></input>
+        </div>
+        <button onClick={() => login()}>Submit</button>
+        {error.length > 0 && (
+          <h3 style={{ color: "red" }} className="text-center">
+            {error}
+          </h3>
+        )}
+        <p>
+          Create an account <Link to="/createaccount">here</Link>.
+        </p>
+      </main>
     </>
   );
 };

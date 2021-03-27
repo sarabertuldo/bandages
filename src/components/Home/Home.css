@@ -4,3 +4,20 @@
   border-radius: 5px;
   text-align: center;
 }
+
+main {
+  min-height: 70vh;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+input {
+  margin: 5px;
+}
+
+button {
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  margin: 5px;
+}
