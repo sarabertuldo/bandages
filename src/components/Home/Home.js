@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import { setUser } from "../../redux/actions";
 import "./Home.css";
-import axios from "axios";
 
 const Home = (props) => {
   const history = useHistory();
@@ -26,32 +25,18 @@ const Home = (props) => {
       return;
     }
     try {
-      // try to do the fetch to the appropriate endpoint
-      // post username and password in a body
-      // uncomment 32, 33, 35, 37, 40, 41, 43
-      // const response = await fetch("/users/login", {
-      //   method: "POST",
-      // information about the request being sent
-      // headers: {
-      //   "Content-Type": "application/json",
-      // },
-      // username because of Line 9, password because of Line 10
-      // sending data as a string/making an object a string, looks like a JSON so turn it back into an object
-      //   body: JSON.stringify({ username: username, password: password }),
-      // });
-      // check the response
-      // const json = await response.json();
-      // handle response correctly
-      // comment 46-49
-      const json = await axios.post("users/login", {
-        username: username,
-        password: password,
+      const response = await fetch("/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username: username, password: password }),
       });
-      // add .data after each json (L49, 50, 52) (ex. json.data.data.username)
-      if (json.error) {
-        setError(json.error);
+      const json = await response.json();
+      if (json.data.error) {
+        setError(json.data.error);
       } else {
-        props.setUser(json.data.username);
+        props.setUser(json.data.data.username);
         history.push("/search");
       }
     } catch (error) {

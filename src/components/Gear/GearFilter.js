@@ -10,8 +10,9 @@ const GearFilter = (props) => {
   const gear = useContext(GearContext);
 
   const tourGear = useMemo(() => {
-    return props.onTour.map((gear) => gear.item);
-  }, [props.onTour]);
+    return props.gear.onTour.map((gear) => gear.item);
+  }, [props.gear.onTour]);
+  console.log(gear.item);
 
   // map in my gear filter
 
@@ -89,17 +90,3 @@ const GearFilter = (props) => {
 };
 
 export default GearFilter;
-
-{
-  /* <div>
-<GearFilter
-  gear={props.gear}
-  bandmate={props.bandmate}
-  notes={props.notes}
-  onTour={tourGear.includes(props.item)}
-  deleteFromVan={props.deleteFromVan}
-  addToVan={props.addToVan}
-/>
-</div> 
-Lines 73-75 delete?}*/
-}

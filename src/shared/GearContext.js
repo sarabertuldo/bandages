@@ -1,4 +1,5 @@
-import React, { useReducer, createContext } from "react";
+import React from "react";
+// import React, { useReducer, createContext } from "react";
 import { useArray } from "../hooks/useArray";
 
 const initialState = [
@@ -46,18 +47,18 @@ const initialState = [
   },
 ];
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "ADD_GEAR":
-      return {
-        gear: [...state.gear, action.payload],
-      };
-    case "DEL_GEAR":
-      return {
-        gear: state.gear.filter((gear) => gear.id !== action.payload),
-      };
-  }
-};
+// const reducer = (state, action) => {
+//   switch (action.type) {
+//     case "ADD_GEAR":
+//       return {
+//         gear: [...state.gear, action.payload],
+//       };
+//     case "DEL_GEAR":
+//       return {
+//         gear: state.gear.filter((gear) => gear.id !== action.payload),
+//       };
+//   }
+// };
 
 export const GearContext = React.createContext(null);
 

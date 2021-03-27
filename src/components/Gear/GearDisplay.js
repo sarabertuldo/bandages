@@ -2,7 +2,13 @@ import React, { useContext } from "react";
 import { GearContext } from "../../shared/GearContext";
 import "./Gear.css";
 
-const GearDisplay = () => {
+const GearDisplay = ({
+  changeInsured,
+  addToVan,
+  removeFromVan,
+  deleteGear,
+  onTour,
+}) => {
   const gear = useContext(GearContext);
   return (
     <>

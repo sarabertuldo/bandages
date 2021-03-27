@@ -12,8 +12,6 @@ import {
   Switch,
 } from "react-router-dom";
 
-import store from "./redux/Store";
-
 function App() {
   return (
     <GearProvider>
