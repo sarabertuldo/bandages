@@ -2,6 +2,17 @@ import React from "react";
 // import React, { useReducer, createContext } from "react";
 import { useArray } from "../hooks/useArray";
 
+// const initialState = {
+//   onTour: [],
+//   gear: {
+//     id: null,
+//     bandmate: "",
+//     item: "",
+//     notes: "",
+//     insured: false,
+//   },
+// };
+
 const initialState = [
   {
     id: 1,

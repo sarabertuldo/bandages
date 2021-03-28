@@ -1,5 +1,5 @@
 import React, { useContext, useMemo, useState } from "react";
-import { GearContext } from "../../shared/GearContext";
+import GearProvider, { GearContext } from "../../shared/GearContext";
 import GearDisplay from "./GearDisplay";
 import "./Gear.css";
 
@@ -73,6 +73,7 @@ const GearFilter = () => {
           })
           .map((g, index) => {
             return (
+              <GearProvider>
               <GearDisplay
                 deleteGear={gear.delete}
                 changeInsured={gear.changeInsured}
@@ -82,6 +83,7 @@ const GearFilter = () => {
                 gear={g}
                 key={index}
               />
+              </GearProvider>
             );
           })}
       </div>

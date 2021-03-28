@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import GearFilter from "./GearFilter";
 import "./Gear.css";
 import { GearContext } from "../../shared/GearContext";
+import GearProvider from "../../shared/GearContext";
 
 const GearList = (props) => {
   const [bandmate, setBandmate] = useState("");
@@ -62,7 +63,9 @@ const GearList = (props) => {
         </button>
       </div>
       <div>
-        <GearFilter />
+        <GearProvider>
+          <GearFilter />
+        </GearProvider>
       </div>
     </>
   );

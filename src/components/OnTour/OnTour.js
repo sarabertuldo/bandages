@@ -1,6 +1,7 @@
 import React from "react";
 import { addToVan, deleteFromVan } from "../../redux/actions";
 import { connect } from "react-redux";
+import GearProvider, { GearContext } from "../../shared/GearContext";
 import "./OnTour.css";
 import GearDisplay from "../Gear/GearDisplay";
 
