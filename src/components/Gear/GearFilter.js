@@ -73,7 +73,6 @@ const GearFilter = () => {
           })
           .map((g, index) => {
             return (
-              <GearProvider>
               <GearDisplay
                 deleteGear={gear.delete}
                 changeInsured={gear.changeInsured}
@@ -83,7 +82,6 @@ const GearFilter = () => {
                 gear={g}
                 key={index}
               />
-              </GearProvider>
             );
           })}
       </div>
