@@ -46,7 +46,16 @@ const Home = (props) => {
   return (
     <>
       <h1>Hello!</h1>
-      <p>Bandages is here to help you manage your band's gear.</p>
+      <p>
+        Bandages is here to help you manage your band's gear. Keep track of your
+        inventory through our website and mark items that you take on tour with
+        you! Did you know bands traveling between borders need to have a
+        detailed documentation of instruments? They also ask you how much is in
+        your bank account, it's a little weird. It's just kind of nice to have a
+        list of what you have anyway. If your mom was in the band with you, she
+        would tell you do this! Listen to her and don't forget to call her once
+        in a while. Remember, she used to cook food for you.
+      </p>
       <h3>Login</h3>
       <main>
         <div>

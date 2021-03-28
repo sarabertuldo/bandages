@@ -21,10 +21,10 @@ function App() {
           <header className="top">
             <Link to="/Home">
               <img
-                src="https://i.ibb.co/BNw76N7/bandages-small.png"
+                src="https://i.ibb.co/g4JHVcW/bandages-logo3.jpg"
                 alt="Bandages logo"
                 height="100"
-                width="232"
+                width="450"
               />
             </Link>
           </header>

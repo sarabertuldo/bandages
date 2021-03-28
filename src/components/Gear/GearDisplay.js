@@ -14,7 +14,7 @@ const GearDisplay = ({
     <>
       <div>
         {/* props.gear.map((gear) */}
-        {/* {gear.bandmate} {gear.item} {gear.notes} */}
+        {gear.bandmate} {gear.item} {gear.notes}
         <input
           type="checkbox"
           checked={gear.insured}
