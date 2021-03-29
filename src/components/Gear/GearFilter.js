@@ -1,5 +1,5 @@
 import React, { useContext, useMemo, useState } from "react";
-import GearProvider, { GearContext } from "../../shared/GearContext";
+import { GearContext } from "../../shared/GearContext";
 import GearDisplay from "./GearDisplay";
 import "./Gear.css";
 
@@ -11,10 +11,7 @@ const GearFilter = () => {
 
   const tourGear = useMemo(() => {
     return gear.value.map((gear) => gear.item);
-  }, [gear.onTour]);
-  console.log(gear.onTour);
-
-  // map in my gear filter
+  }, [gear.value.onTour]);
 
   return (
     <>

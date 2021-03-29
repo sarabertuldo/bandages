@@ -20,7 +20,7 @@ const GearDisplay = ({
           onClick={() => changeInsured(gear.id)}
         />
         {!onTour && (
-          <button onClick={() => addToVan(gear)}> Send to Van</button>
+          <button onClick={() => addToVan(gear.addToVan)}> Send to Van</button>
         )}
         {onTour && (
           <button onClick={() => removeFromVan(gear.id)}>
