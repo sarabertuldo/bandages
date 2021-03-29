@@ -9,7 +9,7 @@ const OnTour = (props) => {
 
       <img
         src="https://cdn.hswstatic.com/gif/how-to-draw-cars-31.jpg"
-        alt="Van"
+        alt="Vrooooom"
       />
 
       {props.onTour.map((g) => (
