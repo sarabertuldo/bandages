@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import { connect } from "react-redux";
-import { setUser } from "../../redux/actions";
+
 import "./CreateAccount.css";
 
 const CreateAccount = (props) => {
@@ -89,12 +88,4 @@ const CreateAccount = (props) => {
   );
 };
 
-const mapDispatchToProps = {
-  setUser,
-};
-
-function mapStateToProps(state) {
-  return {};
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CreateAccount);
+export default CreateAccount;

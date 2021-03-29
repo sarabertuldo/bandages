@@ -9,10 +9,12 @@ const GearFilter = () => {
   const [sortOrder, setSortOrder] = useState(1);
   const [state, dispatch] = useContext(GearContext);
 
-  const tourGear = useMemo(() => {
-    return state.gear.map((gear) => gear.item);
-  }, [state.gear]);
-
+  // const tourGear = useMemo(() => {
+  //   console.log(state);
+  //   return state.gear.map((gear) => gear.item);
+  // }, [state.gear]);
+  const tourGear = [];
+  console.log(state.gear);
   return (
     <>
       <div>
@@ -44,7 +46,9 @@ const GearFilter = () => {
         </select>
       </div>
       <div className="center display">
-        <button onClick={() => gear.clear()}>Clear All</button>
+        <button onClick={() => console.log("clearing up gear hehhe")}>
+          Clear All
+        </button>
       </div>
       <div>
         {state.gear
@@ -71,11 +75,7 @@ const GearFilter = () => {
           .map((g, index) => {
             return (
               <GearDisplay
-                deleteGear={gear.delete}
-                changeInsured={gear.changeInsured}
-                addToVan={gear.addToVan}
-                removeFromVan={gear.removeFromVan}
-                onTour={tourGear.includes(gear.onTour)}
+                onTour={tourGear.includes(g.onTour)}
                 gear={g}
                 key={index}
               />

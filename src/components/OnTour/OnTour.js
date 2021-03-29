@@ -1,6 +1,4 @@
 import React from "react";
-import { addToVan, deleteFromVan } from "../../redux/actions";
-import { connect } from "react-redux";
 import "./OnTour.css";
 import GearDisplay from "../Gear/GearDisplay";
 
@@ -26,15 +24,4 @@ const OnTour = (props) => {
   );
 };
 
-const mapDispatchToProps = {
-  addToVan,
-  deleteFromVan,
-};
-
-function mapStateToProps(state) {
-  return {
-    onTour: state.onTour,
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(OnTour);
+export default OnTour;

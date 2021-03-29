@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { GearContext } from "../../shared/GearContext";
 import "./Gear.css";
 
 const GearDisplay = ({
@@ -6,10 +7,14 @@ const GearDisplay = ({
   changeInsured,
   addToVan,
   removeFromVan,
-  deleteGear,
   onTour,
 }) => {
   const [state, dispatch] = useContext(GearContext);
+  const deleteGear = (id) =>
+    dispatch({
+      type: "DELETE_GEAR",
+      id: id,
+    });
 
   return (
     <>

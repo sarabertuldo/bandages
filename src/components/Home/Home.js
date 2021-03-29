@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
-import { setUser } from "../../redux/actions";
 import "./Home.css";
 
 const Home = (props) => {
@@ -90,15 +88,7 @@ const Home = (props) => {
   );
 };
 
-const mapDispatchToProps = {
-  setUser,
-};
-
-function mapStateToProps(state) {
-  return {};
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;
 // props.setUser(username);
 // let user = { username: username, password: password}
 //  fetch("/users/signup")
