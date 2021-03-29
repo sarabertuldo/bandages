@@ -9,6 +9,8 @@ const GearDisplay = ({
   deleteGear,
   onTour,
 }) => {
+  const [state, dispatch] = useContext(GearContext);
+
   return (
     <>
       <div>

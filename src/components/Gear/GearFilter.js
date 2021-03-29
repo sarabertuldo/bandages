@@ -7,11 +7,11 @@ const GearFilter = () => {
   const [filter, setFilter] = useState("");
   const [sortKey, setSortKey] = useState("bandmate");
   const [sortOrder, setSortOrder] = useState(1);
-  const gear = useContext(GearContext);
+  const [state, dispatch] = useContext(GearContext);
 
   const tourGear = useMemo(() => {
-    return gear.value.map((gear) => gear.item);
-  }, [gear.value.onTour]);
+    return state.gear.map((gear) => gear.item);
+  }, [state.gear]);
 
   return (
     <>
@@ -47,7 +47,7 @@ const GearFilter = () => {
         <button onClick={() => gear.clear()}>Clear All</button>
       </div>
       <div>
-        {gear.value
+        {state.gear
           .filter((value) => {
             let filterLC = filter.toLowerCase();
             let bandmateLC = value.bandmate.toLowerCase();

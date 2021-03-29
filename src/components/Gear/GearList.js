@@ -2,14 +2,13 @@ import React, { useContext, useState } from "react";
 import GearFilter from "./GearFilter";
 import "./Gear.css";
 import { GearContext } from "../../shared/GearContext";
-import GearProvider from "../../shared/GearContext";
 
 const GearList = (props) => {
   const [bandmate, setBandmate] = useState("");
   const [item, setItem] = useState("");
   const [notes, setNotes] = useState("");
   const [id, setId] = useState([7]);
-  const gear = useContext(GearContext);
+  const [state, dispatch] = useContext(GearContext);
 
   return (
     <>
@@ -52,7 +51,10 @@ const GearList = (props) => {
           value="addGear"
           onClick={() => {
             let newGear = { id, item, notes, insured: false, bandmate };
-            gear.add(newGear);
+            dispatch({
+              type: "ADD_GEAR",
+              payload: newGear,
+            });
             setId(id + 1);
             setBandmate("");
             setItem("");
@@ -63,9 +65,7 @@ const GearList = (props) => {
         </button>
       </div>
       <div>
-        <GearProvider>
-          <GearFilter />
-        </GearProvider>
+        <GearFilter />
       </div>
     </>
   );

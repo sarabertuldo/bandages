@@ -1,5 +1,4 @@
 import React from "react";
-// import React, { useReducer, createContext } from "react";
 import { useArray } from "../hooks/useArray";
 
 // const initialState = {
@@ -71,12 +70,25 @@ const initialState = [
 //   }
 // };
 
-export const GearContext = React.createContext(null);
+export const GearContext = React.createContext();
 
-const GearProvider = (props) => {
-  const gear = useArray(initialState);
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "ADD_GEAR":
+      return {
+        gear: [...state.gear, action.payload],
+      };
+
+    default:
+      throw new Error();
+  }
+};
+export const GearProvier = (props) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
   return (
-    <GearContext.Provider value={gear}>{props.children}</GearContext.Provider>
+    <GearContext.Provider value={[state, dispatch]}>
+      {props.children}
+    </GearContext.Provider>
   );
 };
 
