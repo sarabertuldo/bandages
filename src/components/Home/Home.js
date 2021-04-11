@@ -81,7 +81,7 @@ const Home = (props) => {
           </h3>
         )}
         <p>
-          Create an account <Link to="/createaccount">here</Link>.
+          Create an account <Link to="/signup">here</Link>!
         </p>
       </main>
     </>

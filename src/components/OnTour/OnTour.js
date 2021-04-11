@@ -17,7 +17,7 @@ const OnTour = (props) => {
           key={g.id}
           gear={g}
           onTour={true}
-          deleteFromVan={props.deleteFromVan}
+          removeFromVan={props.remove}
         />
       ))}
     </>

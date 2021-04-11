@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 
-import "./CreateAccount.css";
+import "./SignUp.css";
 
-const CreateAccount = (props) => {
+const SignUp = (props) => {
   const history = useHistory();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -88,4 +88,4 @@ const CreateAccount = (props) => {
   );
 };
 
-export default CreateAccount;
+export default SignUp;

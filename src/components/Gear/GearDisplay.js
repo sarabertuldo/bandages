@@ -1,20 +1,23 @@
 import React, { useContext } from "react";
 import { GearContext } from "../../shared/GearContext";
+// import { reducer } from "../../shared/GearContext"
 import "./Gear.css";
 
-const GearDisplay = ({
-  gear,
-  changeInsured,
-  addToVan,
-  removeFromVan,
-  onTour,
-}) => {
-  const [state, dispatch] = useContext(GearContext);
-  const deleteGear = (id) =>
-    dispatch({
-      type: "DELETE_GEAR",
-      id: id,
-    });
+const GearDisplay = ({ addToVan, removeFromVan, changeInsured, onTour }) => {
+  // const [state, dispatch] = useContext(GearContext);
+  const gear = useContext(GearContext);
+
+  // const deleteGear = (id) =>
+  //   dispatch({
+  //     type: "DELETE_GEAR",
+  //     id: id,
+  //   });
+
+  // const changeInsured = (id) =>
+  //   dispatch({
+  //     type: "CHANGE_INSURED",
+  //     id: id,
+  //   });
 
   return (
     <>
@@ -24,7 +27,7 @@ const GearDisplay = ({
         <input
           type="checkbox"
           checked={gear.insured}
-          onClick={() => changeInsured(gear.id)}
+          onClick={() => changeInsured(gear.changeInsured)}
         />
         {!onTour && (
           <button onClick={() => addToVan(gear.addToVan)}> Send to Van</button>
@@ -34,7 +37,7 @@ const GearDisplay = ({
             Remove from Van
           </button>
         )}
-        <button onClick={() => deleteGear(gear.id)}>x</button>
+        <button onClick={() => delete gear.delete}>x</button>
       </div>
     </>
   );

@@ -1,5 +1,5 @@
 import "./App.css";
-import CreateAccount from "./components/CreateAccount/CreateAccount";
+import SignUp from "./components/SignUp/SignUp";
 import GearList from "./components/Gear/GearList";
 import Home from "./components/Home/Home";
 import OnTour from "./components/OnTour/OnTour";
@@ -23,8 +23,8 @@ function App() {
               <img
                 src="https://i.ibb.co/g4JHVcW/bandages-logo3.jpg"
                 alt="Bandages logo"
-                height="100"
-                width="450"
+                height="75"
+                width="350"
               />
             </Link>
           </header>
@@ -32,8 +32,8 @@ function App() {
             <NavLink className="link" to="/Home">
               Home
             </NavLink>
-            <NavLink className="link" to="/CreateAccount">
-              Create Account
+            <NavLink className="link" to="/SignUp">
+              Sign Up
             </NavLink>
             <NavLink className="link" to="/GearList">
               Gear List
@@ -45,7 +45,7 @@ function App() {
           <main>
             <Switch>
               <Route path="/home" component={Home} />
-              <Route path="/createaccount" component={CreateAccount} />
+              <Route path="/signup" component={SignUp} />
               <Route path="/gearlist" component={GearList} />
               <Route path="/ontour" component={OnTour} />
               <Route path="*">

@@ -7,14 +7,15 @@ const GearFilter = () => {
   const [filter, setFilter] = useState("");
   const [sortKey, setSortKey] = useState("bandmate");
   const [sortOrder, setSortOrder] = useState(1);
-  const [state, dispatch] = useContext(GearContext);
-
+  // const [state, dispatch] = useContext(GearContext);
+  const gear = useContext(GearContext);
+  console.log(gear);
   // const tourGear = useMemo(() => {
   //   console.log(state);
   //   return state.gear.map((gear) => gear.item);
   // }, [state.gear]);
-  const tourGear = [];
-  console.log(state.gear);
+  // const tourGear = [];
+
   return (
     <>
       <div>
@@ -50,12 +51,17 @@ const GearFilter = () => {
           Clear All
         </button>
       </div>
+
+      <div className="title-bar">
+        <strong>Bandmate Item Notes Insured</strong>
+      </div>
+
       <div>
-        {state.gear
+        {gear.value
           .filter((value) => {
             let filterLC = filter.toLowerCase();
-            let bandmateLC = value.bandmate.toLowerCase();
-            let itemLC = value.item.toLowerCase();
+            let bandmateLC = gear.bandmate.toLowerCase();
+            let itemLC = gear.item.toLowerCase();
             return bandmateLC.includes(filterLC) || itemLC.includes(filterLC)
               ? true
               : false;
@@ -75,8 +81,9 @@ const GearFilter = () => {
           .map((g, index) => {
             return (
               <GearDisplay
-                onTour={tourGear.includes(g.onTour)}
+                onTour={g.onTour}
                 gear={g}
+                changeInsured={g.changeInsured}
                 key={index}
               />
             );

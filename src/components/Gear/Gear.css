@@ -6,3 +6,10 @@
   width: 100%;
   margin-bottom: 10px;
 }
+
+.title-bar {
+  color: black;
+  padding: 5px;
+  justify-content: space-between;
+  display: flex;
+}

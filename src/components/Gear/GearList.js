@@ -8,7 +8,8 @@ const GearList = (props) => {
   const [item, setItem] = useState("");
   const [notes, setNotes] = useState("");
   const [id, setId] = useState([7]);
-  const [state, dispatch] = useContext(GearContext);
+  // const [state, dispatch] = useContext(GearContext);
+  const gear = useContext(GearContext);
 
   return (
     <>
@@ -51,10 +52,7 @@ const GearList = (props) => {
           value="addGear"
           onClick={() => {
             let newGear = { id, item, notes, insured: false, bandmate };
-            dispatch({
-              type: "ADD_GEAR",
-              payload: newGear,
-            });
+            gear.add(newGear);
             setId(id + 1);
             setBandmate("");
             setItem("");
