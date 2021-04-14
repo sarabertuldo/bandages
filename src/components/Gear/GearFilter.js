@@ -8,8 +8,8 @@ const GearFilter = () => {
   const [sortKey, setSortKey] = useState("bandmate");
   const [sortOrder, setSortOrder] = useState(1);
   // const [state, dispatch] = useContext(GearContext);
-  const gear = useContext(GearContext);
-  console.log(gear);
+  const gearState = useContext(GearContext);
+  const gearArray = gearState.value.gears;
   // const tourGear = useMemo(() => {
   //   console.log(state);
   //   return state.gear.map((gear) => gear.item);
@@ -57,37 +57,38 @@ const GearFilter = () => {
       </div>
 
       <div>
-        {gear.value
-          .filter((value) => {
-            let filterLC = filter.toLowerCase();
-            let bandmateLC = gear.bandmate.toLowerCase();
-            let itemLC = gear.item.toLowerCase();
-            return bandmateLC.includes(filterLC) || itemLC.includes(filterLC)
-              ? true
-              : false;
-          })
-          .sort((a, b) => {
-            if (sortKey === "id") {
-              return (a.id - b.id) * sortOrder;
-            }
-            if (a[sortKey].toLowerCase() < b[sortKey].toLowerCase()) {
-              return -1 * sortOrder;
-            }
-            if (a[sortKey].toLowerCase() > b[sortKey].toLowerCase()) {
-              return 1 * sortOrder;
-            }
-            return 0;
-          })
-          .map((g, index) => {
-            return (
-              <GearDisplay
-                onTour={g.onTour}
-                gear={g}
-                changeInsured={g.changeInsured}
-                key={index}
-              />
-            );
-          })}
+        {gearArray &&
+          gearArray
+            .filter((val) => {
+              let filterLC = filter.toLowerCase();
+              let bandmateLC = val.bandmate.toLowerCase();
+              let itemLC = val.item.toLowerCase();
+              return bandmateLC.includes(filterLC) || itemLC.includes(filterLC)
+                ? true
+                : false;
+            })
+            .sort((a, b) => {
+              if (sortKey === "id") {
+                return (a.id - b.id) * sortOrder;
+              }
+              if (a[sortKey].toLowerCase() < b[sortKey].toLowerCase()) {
+                return -1 * sortOrder;
+              }
+              if (a[sortKey].toLowerCase() > b[sortKey].toLowerCase()) {
+                return 1 * sortOrder;
+              }
+              return 0;
+            })
+            .map((g, index) => {
+              return (
+                <GearDisplay
+                  onTour={g.onTour}
+                  gear={g}
+                  changeInsured={g.changeInsured}
+                  key={index}
+                />
+              );
+            })}
       </div>
     </>
   );

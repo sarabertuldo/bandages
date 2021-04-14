@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 export const useArray = (initialValue) => {
-  console.log(initialValue);
+  // console.log(initialValue);
   const [value, setValue] = useState(initialValue);
   const [onTour, setOnTour] = useState([]);
 

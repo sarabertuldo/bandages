@@ -9,7 +9,8 @@ const GearList = (props) => {
   const [notes, setNotes] = useState("");
   const [id, setId] = useState([7]);
   // const [state, dispatch] = useContext(GearContext);
-  const gear = useContext(GearContext);
+  const gearState = useContext(GearContext);
+  const gear = gearState.value.gears;
 
   return (
     <>
@@ -52,11 +53,13 @@ const GearList = (props) => {
           value="addGear"
           onClick={() => {
             let newGear = { id, item, notes, insured: false, bandmate };
-            gear.add(newGear);
-            setId(id + 1);
-            setBandmate("");
-            setItem("");
-            setNotes("");
+            if (gear) {
+              gear.add(newGear);
+              setId(id + 1);
+              setBandmate("");
+              setItem("");
+              setNotes("");
+            }
           }}
         >
           Submit

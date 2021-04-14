@@ -38,7 +38,7 @@ const Home = (props) => {
         history.push("/search");
       }
     } catch (error) {
-      setError("Something went wrong, please try again later.");
+      setError("Something went wrong, please try again again later.");
     }
   }
   return (

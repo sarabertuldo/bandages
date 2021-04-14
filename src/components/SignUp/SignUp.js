@@ -18,7 +18,7 @@ const SignUp = (props) => {
       password.length < 8
     ) {
       setError(
-        "Username must be between 8 and 16 characters and Password must be between 8 and 20 characters"
+        "Username must be between 8 and 16 characters/Password must be between 8 and 20 characters."
       );
       return;
     }
@@ -52,7 +52,7 @@ const SignUp = (props) => {
   }
   return (
     <>
-      <h1 className="text-center">Create Account</h1>
+      <h1 className="text-center">Sign Up</h1>
       <div className="form">
         <div className="form-container">
           <input

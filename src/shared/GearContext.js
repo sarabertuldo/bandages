@@ -59,7 +59,7 @@ const initialState = {
   ],
 };
 
-export const GearContext = React.createContext(null);
+export const GearContext = React.createContext();
 
 // const reducer = (state, action) => {
 //   switch (action.type) {
