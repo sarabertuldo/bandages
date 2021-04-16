@@ -1,19 +1,19 @@
 import { useCallback, useState } from "react";
 export const useArray = (initialValue) => {
-  // console.log(initialValue);
   const [value, setValue] = useState(initialValue);
   const [onTour, setOnTour] = useState([]);
-
   return {
     value,
     onTour,
-    addToVan: useCallback((toSetOnTour) =>
+    addOnTour: useCallback((toSetOnTour) =>
       setOnTour((onTour) => [...onTour, toSetOnTour])
     ),
-    removeFromVan: useCallback((toRemoveFromVan) =>
-      setOnTour((onTour) => [...onTour, toRemoveFromVan])
+    deleteOnTour: useCallback((toDeleteOnTour) =>
+      setOnTour((onTour) => [...onTour, toDeleteOnTour])
     ),
-    edit: useCallback((toEdit) => setValue((value) => [...value, toEdit])),
+    deleteOnTour: useCallback((toDeleteOnTour) =>
+      setOnTour((onTour) => [...onTour, toDeleteOnTour])
+    ),
     add: useCallback((toAdd) => setValue((value) => [...value, toAdd])),
     changeInsured: useCallback((id) =>
       setValue((arr) => {

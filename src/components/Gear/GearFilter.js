@@ -1,24 +1,20 @@
-import React, { useContext, useMemo, useState } from "react";
-import { GearContext } from "../../shared/GearContext";
+import React, { useState, useMemo, useContext } from "react";
 import GearDisplay from "./GearDisplay";
-import "./Gear.css";
+import { GearContext } from "../../shared/GearContext";
 
 const GearFilter = () => {
   const [filter, setFilter] = useState("");
   const [sortKey, setSortKey] = useState("bandmate");
   const [sortOrder, setSortOrder] = useState(1);
-  // const [state, dispatch] = useContext(GearContext);
-  const gearState = useContext(GearContext);
-  const gearArray = gearState.value.gears;
-  // const tourGear = useMemo(() => {
-  //   console.log(state);
-  //   return state.gear.map((gear) => gear.item);
-  // }, [state.gear]);
-  // const tourGear = [];
+  const gear = useContext(GearContext);
+
+  const gearOnTour = useMemo(() => {
+    return gear.onTour.map((gear) => gear.id);
+  }, [gear.onTour]);
 
   return (
     <>
-      <div>
+      <div className="center">
         <input
           className="display"
           value={filter}
@@ -47,48 +43,48 @@ const GearFilter = () => {
         </select>
       </div>
       <div className="center display">
-        <button onClick={() => console.log("clearing up gear hehhe")}>
-          Clear All
-        </button>
+        <button onClick={() => gear.clear()}>Clear All Gear</button>
       </div>
 
       <div className="title-bar">
         <strong>Bandmate Item Notes Insured</strong>
       </div>
 
-      <div>
-        {gearArray &&
-          gearArray
-            .filter((val) => {
-              let filterLC = filter.toLowerCase();
-              let bandmateLC = val.bandmate.toLowerCase();
-              let itemLC = val.item.toLowerCase();
-              return bandmateLC.includes(filterLC) || itemLC.includes(filterLC)
-                ? true
-                : false;
-            })
-            .sort((a, b) => {
-              if (sortKey === "id") {
-                return (a.id - b.id) * sortOrder;
-              }
-              if (a[sortKey].toLowerCase() < b[sortKey].toLowerCase()) {
-                return -1 * sortOrder;
-              }
-              if (a[sortKey].toLowerCase() > b[sortKey].toLowerCase()) {
-                return 1 * sortOrder;
-              }
-              return 0;
-            })
-            .map((g, index) => {
-              return (
-                <GearDisplay
-                  onTour={g.onTour}
-                  gear={g}
-                  changeInsured={g.changeInsured}
-                  key={index}
-                />
-              );
-            })}
+      <div className="listArea">
+        {gear.value
+          .filter((val) => {
+            let filterLC = filter.toLowerCase();
+            let bandmate = val.bandmate.toLowerCase();
+            let itemLC = val.item.toLowerCase();
+            return bandmate.includes(filterLC) || itemLC.includes(filterLC)
+              ? true
+              : false;
+          })
+          .sort((a, b) => {
+            if (sortKey === "id") {
+              return (a.id - b.id) * sortOrder;
+            }
+            if (a[sortKey].toLowerCase() < b[sortKey].toLowerCase()) {
+              return -1 * sortOrder;
+            }
+            if (a[sortKey].toLowerCase() > b[sortKey].toLowerCase()) {
+              return 1 * sortOrder;
+            }
+            return 0;
+          })
+          .map((g, index) => {
+            return (
+              <GearDisplay
+                deleteGear={gear.delete}
+                changeInsured={gear.changeInsured}
+                onTour={gearOnTour.includes(gear.id)}
+                addOnTour={gear.addOnTour}
+                deleteOnTour={gear.deleteOnTour}
+                gear={g}
+                key={index}
+              />
+            );
+          })}
       </div>
     </>
   );

@@ -12,52 +12,56 @@ import { useArray } from "../hooks/useArray";
 //   },
 // };
 
-const initialState = {
-  gear: [
-    {
-      id: 1,
-      insured: true,
-      bandmate: "Alex",
-      item: "Fender Precision Bass",
-      notes: "olympic white",
-    },
-    {
-      id: 2,
-      insured: false,
-      bandmate: "Sara",
-      item: " Moog Minitaur",
-      notes: "Serial No. MT08645",
-    },
-    {
-      id: 3,
-      insured: true,
-      bandmate: "Matt",
-      item: "ZVEX Machine",
-      notes: "purchased 2016",
-    },
-    {
-      id: 4,
-      insured: false,
-      bandmate: "Nate",
-      item: "Ludwig Vistalite Drum Kit",
-      notes: "transparent dark red",
-    },
-    {
-      id: 5,
-      insured: false,
-      bandmate: "Sara",
-      item: "Reverend Flatroc",
-      notes: "purchased 2013",
-    },
-    {
-      id: 6,
-      insured: false,
-      bandmate: "Matt",
-      item: "Orange AD140",
-      notes: "Serial No. 1350-08-04	",
-    },
-  ],
-};
+const initialState = [
+  {
+    id: 1,
+    insured: true,
+    bandmate: "Matt",
+    item: "ZVEX Machine",
+    notes: "purchased 2016",
+    onTour: false,
+  },
+  {
+    id: 2,
+    insured: false,
+    bandmate: "Alex",
+    item: "Fender Precision Bass",
+    notes: "olympic white",
+    onTour: true,
+  },
+  {
+    id: 3,
+    insured: true,
+    bandmate: "Sara",
+    item: "Moog Minitaur",
+    notes: "Serial No. MT08645",
+    onTour: false,
+  },
+  {
+    id: 4,
+    insured: false,
+    bandmate: "Alex ",
+    item: "Aguilar TH350",
+    notes: "purchased at Midwood Guitar Studio",
+    onTroue: true,
+  },
+  {
+    id: 5,
+    insured: false,
+    bandmate: "Nate ",
+    item: "Ludwig Vistalite Drum Kit",
+    notes: "transparent dark red",
+    onTour: true,
+  },
+  {
+    id: 6,
+    insured: false,
+    bandmate: "Matt",
+    item: "Orange AD140",
+    notes: "Serial No. 1350-08-04",
+    onTour: false,
+  },
+];
 
 export const GearContext = React.createContext();
 
@@ -88,9 +92,8 @@ export const GearProvider = (props) => {
   // const [value, setValue] = useArray(initialValue);
   // const [onTour, setOnTour] = useArray([]);
   const gear = useArray(initialState);
-  const onTour = useArray([]);
   return (
-    <GearContext.Provider value={gear} onTour={onTour}>
+    <GearContext.Provider value={gear}>
       {/* <GearContext.Provider value={[state, dispatch]}> */}
       {props.children}
     </GearContext.Provider>

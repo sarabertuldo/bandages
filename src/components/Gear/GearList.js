@@ -8,10 +8,7 @@ const GearList = (props) => {
   const [item, setItem] = useState("");
   const [notes, setNotes] = useState("");
   const [id, setId] = useState([7]);
-  // const [state, dispatch] = useContext(GearContext);
-  const gearState = useContext(GearContext);
-  const gear = gearState.value.gears;
-
+  const gear = useContext(GearContext);
   return (
     <>
       <h1 className="center">Gear List:</h1>
