@@ -5,11 +5,16 @@ export const useArray = (initialValue) => {
   return {
     value,
     onTour,
-    addOnTour: useCallback((toSetOnTour) =>
-      setOnTour((onTour) => [...onTour, toSetOnTour])
-    ),
-    deleteOnTour: useCallback((toDeleteOnTour) =>
-      setOnTour((onTour) => [...onTour, toDeleteOnTour])
+    addOnTour: useCallback((id) =>
+      setValue((arr) => {
+        let newArr = arr.map((val) => {
+          if (val.id === id) {
+            return { ...val, onTour: !val.onTour };
+          }
+          return val;
+        });
+        return newArr;
+      })
     ),
     deleteOnTour: useCallback((toDeleteOnTour) =>
       setOnTour((onTour) => [...onTour, toDeleteOnTour])
