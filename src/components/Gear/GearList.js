@@ -3,11 +3,11 @@ import GearFilter from "./GearFilter";
 import "./Gear.css";
 import { GearContext } from "../../shared/GearContext";
 
-const GearList = (props) => {
+const GearList = () => {
   const [bandmate, setBandmate] = useState("");
   const [item, setItem] = useState("");
   const [notes, setNotes] = useState("");
-  const [id, setId] = useState([7]);
+  const [id, setId] = useState([9]);
   const gear = useContext(GearContext);
   return (
     <>

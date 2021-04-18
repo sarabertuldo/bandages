@@ -77,7 +77,7 @@ const GearFilter = () => {
               <GearDisplay
                 deleteGear={gear.delete}
                 changeInsured={gear.changeInsured}
-                onTour={gear.onTour}
+                isOnTour={false}
                 addOnTour={gear.addOnTour}
                 deleteOnTour={gear.deleteOnTour}
                 gear={g}

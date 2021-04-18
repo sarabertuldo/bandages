@@ -91,13 +91,13 @@ function App() {
                 />
                 <ProtectedRoute
                   isAuth={isAuth}
-                  authRequired={true}
+                  authRequired={false}
                   path="/gearlist"
                   component={GearList}
                 />
                 <ProtectedRoute
                   isAuth={isAuth}
-                  authRequired={true}
+                  authRequired={false}
                   path="/ontour"
                   component={OnTour}
                 />

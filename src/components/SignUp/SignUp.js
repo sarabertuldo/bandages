@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { connect } from "react-redux";
+import { setUser } from "../../redux/actions";
 import axios from "axios";
 
 import "./SignUp.css";
@@ -88,4 +90,12 @@ const SignUp = (props) => {
   );
 };
 
-export default SignUp;
+const mapDispatchToProps = {
+  setUser,
+};
+
+function mapStateToProps(state) {
+  return {};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

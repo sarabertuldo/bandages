@@ -53,3 +53,7 @@ main {
 a:hover {
   color: grey;
 }
+
+.logout {
+  text-align: center;
+}

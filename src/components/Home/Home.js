@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { setUser } from "../../redux/actions";
+import axios from "axios";
 import "./Home.css";
 
 const Home = (props) => {
@@ -7,10 +10,8 @@ const Home = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
   async function login() {
     setError("");
-    console.log(username, password);
     if (
       username.length < 8 ||
       username.length > 16 ||
@@ -18,27 +19,24 @@ const Home = (props) => {
       password.length < 8
     ) {
       setError(
-        "Username must be between 8 and 16 characters. Password must be between 8 and 20 characters."
+        "Username must be between 8 and 16 characters and Password must be between 8 and 20 characters"
       );
       return;
     }
     try {
-      const response = await fetch("/users/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username: username, password: password }),
+      // Try to do the fetch to the appropriate endpoint
+      const json = await axios.post("/users/login", {
+        username: username,
+        password: password,
       });
-      const json = await response.json();
       if (json.data.error) {
         setError(json.data.error);
       } else {
         props.setUser(json.data.data.username);
         history.push("/search");
       }
-    } catch (error) {
-      setError("Something went wrong, please try again again later.");
+    } catch (err) {
+      setError("Something went wrong, please try again later.");
     }
   }
   return (
@@ -88,7 +86,15 @@ const Home = (props) => {
   );
 };
 
-export default Home;
+const mapDispatchToProps = {
+  setUser,
+};
+
+function mapStateToProps(state) {
+  return {};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
 // props.setUser(username);
 // let user = { username: username, password: password}
 //  fetch("/users/signup")

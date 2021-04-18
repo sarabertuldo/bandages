@@ -5,8 +5,8 @@ export const useArray = (initialValue) => {
   return {
     value,
     onTour,
-    addOnTour: useCallback((id) =>
-      setValue((arr) => {
+    toggleOnTour: useCallback((id) =>
+      setOnTour((arr) => {
         let newArr = arr.map((val) => {
           if (val.id === id) {
             return { ...val, onTour: !val.onTour };
@@ -15,9 +15,6 @@ export const useArray = (initialValue) => {
         });
         return newArr;
       })
-    ),
-    deleteOnTour: useCallback((toDeleteOnTour) =>
-      setOnTour((onTour) => [...onTour, toDeleteOnTour])
     ),
     add: useCallback((toAdd) => setValue((value) => [...value, toAdd])),
     changeInsured: useCallback((id) =>
