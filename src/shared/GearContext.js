@@ -1,17 +1,6 @@
 import React from "react";
 import { useArray } from "../hooks/useArray";
 
-// const initialState = {
-//   onTour: [],
-//   gear: {
-//     id: null,
-//     bandmate: "",
-//     item: "",
-//     notes: "",
-//     insured: false,
-//   },
-// };
-
 const initialState = [
   {
     id: 1,
@@ -43,7 +32,7 @@ const initialState = [
     bandmate: "Alex ",
     item: "Aguilar TH350",
     notes: "purchased at Midwood Guitar Studio",
-    onTroue: true,
+    onTour: false,
   },
   {
     id: 5,
@@ -60,6 +49,22 @@ const initialState = [
     item: "Orange AD140",
     notes: "Serial No. 1350-08-04",
     onTour: false,
+  },
+  {
+    id: 7,
+    insured: true,
+    bandmate: "Sara",
+    item: "Fender Jaguar",
+    notes: "olympic white",
+    onTour: true,
+  },
+  {
+    id: 8,
+    insured: false,
+    bandmate: "Matt",
+    item: "Gibson Firebird",
+    notes: "gift from Sara",
+    onTour: true,
   },
 ];
 
