@@ -1,23 +1,37 @@
 import { useCallback, useState } from "react";
+import axios from "axios";
+
 export const useArray = (initialValue) => {
   const [value, setValue] = useState(initialValue);
-  const [onTour, setOnTour] = useState([]);
   return {
+    all: useCallback(() => {
+      axios.get("gear/all").then((res) => {
+        setValue(res.data.data);
+      });
+    }),
     value,
-    onTour,
-    toggleOnTour: useCallback((id) =>
-      setOnTour((arr) => {
-        let newArr = arr.map((val) => {
-          if (val.id === id) {
-            return { ...val, onTour: !val.onTour };
-          }
-          return val;
+    toggleOnTour: useCallback((id) => {
+      let newValue = value.map((val) => {
+        if (val.id === id) {
+          return { ...val, on_tour: !val.on_tour };
+        }
+        return val;
+      });
+      axios
+        .patch(
+          "/gear/update",
+          newValue.find((v) => v.id === id)
+        )
+        .then((data) => {
+          setValue(newValue);
         });
-        return newArr;
-      })
-    ),
-    add: useCallback((toAdd) => setValue((value) => [...value, toAdd])),
-    changeInsured: useCallback((id) =>
+    }),
+    add: useCallback((toAdd) => {
+      axios.post("/gear/add", toAdd).then((data) => {
+        setValue((value) => [...value, toAdd]);
+      });
+    }),
+    changeInsured: useCallback((id) => {
       setValue((arr) => {
         let newArr = arr.map((val) => {
           if (val.id === id) {
@@ -26,11 +40,21 @@ export const useArray = (initialValue) => {
           return val;
         });
         return newArr;
-      })
-    ),
+      });
+      axios
+        .patch(
+          "/gear/update",
+          value.find((v) => v.id === id)
+        )
+        .then((data) => {
+          console.log("data updated");
+        });
+    }),
     clear: useCallback(() => setValue([])),
-    delete: useCallback((id) =>
-      setValue((arr) => arr.filter((v) => v && v.id !== id))
-    ),
+    deleteGear: useCallback((id) => {
+      axios
+        .delete(`/gear/delete/:${id}`)
+        .then((data) => setValue((arr) => arr.filter((v) => v && v.id !== id)));
+    }),
   };
 };

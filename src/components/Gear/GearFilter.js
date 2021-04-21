@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useContext } from "react";
+import React, { useState, useContext } from "react";
 import GearDisplay from "./GearDisplay";
 import { GearContext } from "../../shared/GearContext";
 
@@ -7,10 +7,6 @@ const GearFilter = () => {
   const [sortKey, setSortKey] = useState("bandmate");
   const [sortOrder, setSortOrder] = useState(1);
   const gear = useContext(GearContext);
-
-  const gearOnTour = useMemo(() => {
-    return gear.onTour.map((gear) => gear.id);
-  }, [gear.onTour]);
 
   return (
     <>
@@ -47,7 +43,7 @@ const GearFilter = () => {
       </div>
 
       <div className="title-bar">
-        <strong>Bandmate Item Notes Insured</strong>
+        <strong>Bandmate Item Notes</strong>
       </div>
 
       <div className="listArea">
@@ -73,17 +69,7 @@ const GearFilter = () => {
             return 0;
           })
           .map((g, index) => {
-            return (
-              <GearDisplay
-                deleteGear={gear.delete}
-                changeInsured={gear.changeInsured}
-                isOnTour={false}
-                addOnTour={gear.addOnTour}
-                deleteOnTour={gear.deleteOnTour}
-                gear={g}
-                key={index}
-              />
-            );
+            return <GearDisplay {...gear} gear={g} key={index} />;
           })}
       </div>
     </>

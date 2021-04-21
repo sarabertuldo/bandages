@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import GearFilter from "./GearFilter";
 import "./Gear.css";
 import { GearContext } from "../../shared/GearContext";
@@ -7,8 +7,12 @@ const GearList = () => {
   const [bandmate, setBandmate] = useState("");
   const [item, setItem] = useState("");
   const [notes, setNotes] = useState("");
-  const [id, setId] = useState([9]);
   const gear = useContext(GearContext);
+
+  useEffect(() => {
+    gear.all();
+    return () => {};
+  }, []);
   return (
     <>
       <h1 className="center">Gear List:</h1>
@@ -49,10 +53,9 @@ const GearList = () => {
           type="submit"
           value="addGear"
           onClick={() => {
-            let newGear = { id, item, notes, insured: false, bandmate };
+            let newGear = { item, notes, insured: false, bandmate };
             if (gear) {
               gear.add(newGear);
-              setId(id + 1);
               setBandmate("");
               setItem("");
               setNotes("");

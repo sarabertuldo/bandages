@@ -1,68 +1,22 @@
-import React from "react";
-import "./OnTour.css";
+import React, { useContext } from "react";
 import GearDisplay from "../Gear/GearDisplay";
-import { addTour, deleteTour } from "../../redux/actions";
-import { connect } from "react-redux";
+import { GearContext } from "../../shared/GearContext";
 
-const OnTour = (props) => {
-  console.log(props);
+const OnTour = () => {
+  const gear = useContext(GearContext);
+  const tourGear = gear.value.filter((gear) => gear.on_tour);
   return (
     <>
       <h1>On Tour</h1>
 
-      <img
-        src="https://cdn.hswstatic.com/gif/how-to-draw-cars-31.jpg"
-        alt="Vrooooom"
-      />
+      <img src="https://i.ibb.co/zQY4MqD/minivan-final.jpg" alt="Vrooooom" />
       <div>
-        {props.onTour.map((gear) => (
-          <GearDisplay
-            key={gear.id}
-            gear={gear}
-            isOnTour={true}
-            deleteTour={props.deleteTour}
-          />
+        {tourGear.map((g) => (
+          <GearDisplay gear={g} {...gear} />
         ))}
       </div>
     </>
   );
 };
 
-const mapDispatchToProps = {
-  deleteTour,
-};
-
-function mapStateToProps(state) {
-  return {
-    onTour: state.onTour,
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(OnTour);
-
-// import React, { useContext } from "react";
-// import "./OnTour.css";
-// import GearDisplay from "../Gear/GearDisplay";
-// import { GearContext } from "../../shared/GearContext";
-
-// const OnTour = () => {
-//   const gear = useContext(GearContext);
-//   const tourGear = gear.value.filter((gear) => gear.onTour);
-//   return (
-//     <>
-//       <h1>On Tour</h1>
-
-//       <img
-//         src="https://cdn.hswstatic.com/gif/how-to-draw-cars-31.jpg"
-//         alt="Vrooooom"
-//       />
-//       <div>
-//         {tourGear.map((gear) => (
-//           <GearDisplay gear={gear} />
-//         ))}
-//       </div>
-//     </>
-//   );
-// };
-
-// export default OnTour;
+export default OnTour;

@@ -28,8 +28,9 @@ function App() {
     setUser
   );
   const isAuth = useMemo(() => {
-    return username.length > 0;
+    return username && username.length > 0;
   }, [user]);
+
   useEffect(async () => {
     try {
       const json = await axios.get("/users/authenticate");
@@ -54,26 +55,32 @@ function App() {
             <header className="top">
               <Link to="/Home">
                 <img
-                  src="https://i.ibb.co/g4JHVcW/bandages-logo3.jpg"
+                  src="https://i.ibb.co/dgxRBQg/bandages-final.jpg"
                   alt="Bandages logo"
-                  height="75"
-                  width="350"
                 />
               </Link>
             </header>
             <nav className="navbar">
-              <NavLink className="link" to="/Home">
-                Home
-              </NavLink>
-              <NavLink className="link" to="/SignUp">
-                Sign Up
-              </NavLink>
-              <NavLink className="link" to="/GearList">
-                Gear List
-              </NavLink>
-              <NavLink className="link" to="/OnTour">
-                On Tour
-              </NavLink>
+              {username && username.length === 0 && (
+                <>
+                  <NavLink className="link" to="/Home">
+                    Home
+                  </NavLink>
+                  <NavLink className="link" to="/SignUp">
+                    Sign Up
+                  </NavLink>
+                </>
+              )}
+              {username && username.length > 0 && (
+                <>
+                  <NavLink className="link" to="/GearList">
+                    Gear List
+                  </NavLink>
+                  <NavLink className="link" to="/OnTour">
+                    On Tour
+                  </NavLink>
+                </>
+              )}
             </nav>
             <main>
               <Switch>
@@ -91,13 +98,13 @@ function App() {
                 />
                 <ProtectedRoute
                   isAuth={isAuth}
-                  authRequired={false}
+                  authRequired={true}
                   path="/gearlist"
                   component={GearList}
                 />
                 <ProtectedRoute
                   isAuth={isAuth}
-                  authRequired={false}
+                  authRequired={true}
                   path="/ontour"
                   component={OnTour}
                 />
@@ -107,7 +114,9 @@ function App() {
               </Switch>
             </main>
             <div className="logout">
-              <button onClick={() => logout()}>Logout</button>
+              {username && username.length > 0 && (
+                <button onClick={() => logout()}>Logout</button>
+              )}
             </div>
             <footer className="bottom">
               <a href="https://github.com/sarabertuldo">

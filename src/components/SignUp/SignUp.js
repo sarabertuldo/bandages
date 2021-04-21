@@ -20,33 +20,20 @@ const SignUp = (props) => {
       password.length < 8
     ) {
       setError(
-        "Username must be between 8 and 16 characters/Password must be between 8 and 20 characters."
+        "Username must be between 8 and 16 characters. Password must be between 8 and 20 characters."
       );
       return;
     }
     try {
-      // Try to do the fetch to the appropriate endpoint
-      // Post username and password in a body
-      // const response = await fetch("/users/login", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify({ username: username, password: password }),
-      // });
-      // // Check the response
-      // const json = await response.json();
-      // Handle response correctly
       const json = await axios.post("/users/signup", {
         username: username,
         password: password,
       });
-      console.log(json);
       if (json.data.error) {
         setError(json.data.error);
       } else {
         props.setUser(json.data.data.username);
-        history.push("/search");
+        history.push("/gearlist");
       }
     } catch (err) {
       setError("Something went wrong, please try again later.");

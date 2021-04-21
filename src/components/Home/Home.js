@@ -33,7 +33,7 @@ const Home = (props) => {
         setError(json.data.error);
       } else {
         props.setUser(json.data.data.username);
-        history.push("/search");
+        history.push("/gearlist");
       }
     } catch (err) {
       setError("Something went wrong, please try again later.");
