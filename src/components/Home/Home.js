@@ -24,7 +24,6 @@ const Home = (props) => {
       return;
     }
     try {
-      // Try to do the fetch to the appropriate endpoint
       const json = await axios.post("/users/login", {
         username: username,
         password: password,
@@ -95,13 +94,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
-// props.setUser(username);
-// let user = { username: username, password: password}
-//  fetch("/users/signup")
-//    method: "POST"",
-// headers: { "Content-Type": "application/json" },
-// body: JSON.stringify(user),
-// })
-// .then((res) => res.json())
-//.then((json) => console.log(json))
-// history.push("/search";)

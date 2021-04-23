@@ -5,7 +5,7 @@ export const useArray = (initialValue) => {
   const [value, setValue] = useState(initialValue);
   return {
     all: useCallback(() => {
-      axios.get("gear/all").then((res) => {
+      axios.get("/gear/all").then((res) => {
         setValue(res.data.data);
       });
     }),
@@ -32,22 +32,19 @@ export const useArray = (initialValue) => {
       });
     }),
     changeInsured: useCallback((id) => {
-      setValue((arr) => {
-        let newArr = arr.map((val) => {
-          if (val.id === id) {
-            return { ...val, insured: !val.insured };
-          }
-          return val;
-        });
-        return newArr;
+      let newValue = value.map((val) => {
+        if (val.id === id) {
+          return { ...val, insured: !val.insured };
+        }
+        return val;
       });
       axios
         .patch(
           "/gear/update",
-          value.find((v) => v.id === id)
+          newValue.find((v) => v.id === id)
         )
         .then((data) => {
-          console.log("data updated");
+          setValue(newValue);
         });
     }),
     clear: useCallback(() => setValue([])),
